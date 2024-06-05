@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SupermarketMVPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bon">
+    <Key>
+      <PropertyRef Name="IDbon" />
+    </Key>
+    <Property Name="IDbon" Type="int" Nullable="false" />
+    <Property Name="data_eliberare" Type="datetime" Nullable="false" />
+    <Property Name="IDcasier" Type="int" />
+    <Property Name="suma_incasa" Type="float" Nullable="false" />
+    <Property Name="exista" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="IDcategorie" />
+    </Key>
+    <Property Name="IDcategorie" Type="int" Nullable="false" />
+    <Property Name="nume_categorie" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="exista" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producator">
+    <Key>
+      <PropertyRef Name="IDproducator" />
+    </Key>
+    <Property Name="IDproducator" Type="int" Nullable="false" />
+    <Property Name="nume_producator" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="tara_origine" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="exista" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Produs">
+    <Key>
+      <PropertyRef Name="IDprodus" />
+    </Key>
+    <Property Name="IDprodus" Type="int" Nullable="false" />
+    <Property Name="nume_produs" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="cod_bare" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="IDcategorie" Type="int" />
+    <Property Name="IDproducator" Type="int" />
+    <Property Name="exista" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProduseVandute">
+    <Key>
+      <PropertyRef Name="IDbon" />
+      <PropertyRef Name="IDprodus" />
+    </Key>
+    <Property Name="IDbon" Type="int" Nullable="false" />
+    <Property Name="IDprodus" Type="int" Nullable="false" />
+    <Property Name="cantitate" Type="int" Nullable="false" />
+    <Property Name="subtotal" Type="float" Nullable="false" />
+    <Property Name="exista" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stoc">
+    <Key>
+      <PropertyRef Name="IDstoc" />
+    </Key>
+    <Property Name="IDstoc" Type="int" Nullable="false" />
+    <Property Name="IDprodus" Type="int" />
+    <Property Name="cantitate" Type="int" Nullable="false" />
+    <Property Name="unitate_de_masura" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="data_aprovizionare" Type="datetime" Nullable="false" />
+    <Property Name="data_expirare" Type="datetime" Nullable="false" />
+    <Property Name="pret_achizitie" Type="float" Nullable="false" />
+    <Property Name="pret_vanzare" Type="float" Nullable="false" />
+    <Property Name="exista" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Utilizator">
+    <Key>
+      <PropertyRef Name="IDutilizator" />
+    </Key>
+    <Property Name="IDutilizator" Type="int" Nullable="false" />
+    <Property Name="nume_utilizator" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="parola" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="tip_utilizator" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="exista" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bon_Utilizator">
+    <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+    <End Role="Bon" Type="Self.Bon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizator">
+        <PropertyRef Name="IDutilizator" />
+      </Principal>
+      <Dependent Role="Bon">
+        <PropertyRef Name="IDcasier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produs_Categorie">
+    <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+    <End Role="Produs" Type="Self.Produs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie">
+        <PropertyRef Name="IDcategorie" />
+      </Principal>
+      <Dependent Role="Produs">
+        <PropertyRef Name="IDcategorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produs_Producator">
+    <End Role="Producator" Type="Self.Producator" Multiplicity="0..1" />
+    <End Role="Produs" Type="Self.Produs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producator">
+        <PropertyRef Name="IDproducator" />
+      </Principal>
+      <Dependent Role="Produs">
+        <PropertyRef Name="IDproducator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProduseVandute_Bon">
+    <End Role="Bon" Type="Self.Bon" Multiplicity="1" />
+    <End Role="ProduseVandute" Type="Self.ProduseVandute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bon">
+        <PropertyRef Name="IDbon" />
+      </Principal>
+      <Dependent Role="ProduseVandute">
+        <PropertyRef Name="IDbon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProduseVandute_Produs">
+    <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
+    <End Role="ProduseVandute" Type="Self.ProduseVandute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="IDprodus" />
+      </Principal>
+      <Dependent Role="ProduseVandute">
+        <PropertyRef Name="IDprodus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stoc_Produs">
+    <End Role="Produs" Type="Self.Produs" Multiplicity="0..1" />
+    <End Role="Stoc" Type="Self.Stoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="IDprodus" />
+      </Principal>
+      <Dependent Role="Stoc">
+        <PropertyRef Name="IDprodus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DeleteBon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDbon" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteCategorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDcategorie" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteProducator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDproducator" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteProdus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDprodus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteProduseVandute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDbon" Type="int" Mode="In" />
+    <Parameter Name="IDprodus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteStoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDstoc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteUtilizator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDutilizator" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPretAchizitieByIdProdus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDprodus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertBon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="data_eliberare" Type="datetime" Mode="In" />
+    <Parameter Name="IDcasier" Type="int" Mode="In" />
+    <Parameter Name="suma_incasa" Type="float" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertCategorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nume_categorie" Type="nvarchar" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertProducator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nume_producator" Type="nvarchar" Mode="In" />
+    <Parameter Name="tara_origine" Type="nvarchar" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertProdus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nume_produs" Type="nvarchar" Mode="In" />
+    <Parameter Name="cod_bare" Type="nvarchar" Mode="In" />
+    <Parameter Name="IDcategorie" Type="int" Mode="In" />
+    <Parameter Name="IDproducator" Type="int" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertProduseVandute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDbon" Type="int" Mode="In" />
+    <Parameter Name="IDprodus" Type="int" Mode="In" />
+    <Parameter Name="cantitate" Type="int" Mode="In" />
+    <Parameter Name="subtotal" Type="float" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertStoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDprodus" Type="int" Mode="In" />
+    <Parameter Name="cantitate" Type="int" Mode="In" />
+    <Parameter Name="unitate_de_masura" Type="nvarchar" Mode="In" />
+    <Parameter Name="data_aprovizionare" Type="datetime" Mode="In" />
+    <Parameter Name="data_expirare" Type="datetime" Mode="In" />
+    <Parameter Name="pret_achizitie" Type="float" Mode="In" />
+    <Parameter Name="pret_vanzare" Type="float" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertUtilizator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nume_utilizator" Type="nvarchar" Mode="In" />
+    <Parameter Name="parola" Type="nvarchar" Mode="In" />
+    <Parameter Name="tip_utilizator" Type="nvarchar" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SelectAllBonuri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllCategorii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllProducatori" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllProduseVandute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllStoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllUtilizatori" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateBon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDbon" Type="int" Mode="In" />
+    <Parameter Name="data_eliberare" Type="datetime" Mode="In" />
+    <Parameter Name="IDcasier" Type="int" Mode="In" />
+    <Parameter Name="suma_incasa" Type="float" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateCategorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDcategorie" Type="int" Mode="In" />
+    <Parameter Name="nume_categorie" Type="nvarchar" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateProducator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDproducator" Type="int" Mode="In" />
+    <Parameter Name="nume_producator" Type="nvarchar" Mode="In" />
+    <Parameter Name="tara_origine" Type="nvarchar" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateProdus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDprodus" Type="int" Mode="In" />
+    <Parameter Name="nume_produs" Type="nvarchar" Mode="In" />
+    <Parameter Name="cod_bare" Type="nvarchar" Mode="In" />
+    <Parameter Name="IDcategorie" Type="int" Mode="In" />
+    <Parameter Name="IDproducator" Type="int" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateProduseVandute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDbon" Type="int" Mode="In" />
+    <Parameter Name="IDprodus" Type="int" Mode="In" />
+    <Parameter Name="cantitate" Type="int" Mode="In" />
+    <Parameter Name="subtotal" Type="float" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateStoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDstoc" Type="int" Mode="In" />
+    <Parameter Name="IDprodus" Type="int" Mode="In" />
+    <Parameter Name="cantitate" Type="int" Mode="In" />
+    <Parameter Name="unitate_de_masura" Type="nvarchar" Mode="In" />
+    <Parameter Name="data_aprovizionare" Type="datetime" Mode="In" />
+    <Parameter Name="data_expirare" Type="datetime" Mode="In" />
+    <Parameter Name="pret_achizitie" Type="float" Mode="In" />
+    <Parameter Name="pret_vanzare" Type="float" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateUtilizator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDutilizator" Type="int" Mode="In" />
+    <Parameter Name="nume_utilizator" Type="nvarchar" Mode="In" />
+    <Parameter Name="parola" Type="nvarchar" Mode="In" />
+    <Parameter Name="tip_utilizator" Type="nvarchar" Mode="In" />
+    <Parameter Name="exista" Type="bit" Mode="In" />
+  </Function>
+  <EntityContainer Name="SupermarketMVPModelStoreContainer">
+    <EntitySet Name="Bon" EntityType="Self.Bon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producator" EntityType="Self.Producator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produs" EntityType="Self.Produs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProduseVandute" EntityType="Self.ProduseVandute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stoc" EntityType="Self.Stoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Utilizator" EntityType="Self.Utilizator" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Bon_Utilizator" Association="Self.FK_Bon_Utilizator">
+      <End Role="Utilizator" EntitySet="Utilizator" />
+      <End Role="Bon" EntitySet="Bon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produs_Categorie" Association="Self.FK_Produs_Categorie">
+      <End Role="Categorie" EntitySet="Categorie" />
+      <End Role="Produs" EntitySet="Produs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produs_Producator" Association="Self.FK_Produs_Producator">
+      <End Role="Producator" EntitySet="Producator" />
+      <End Role="Produs" EntitySet="Produs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProduseVandute_Bon" Association="Self.FK_ProduseVandute_Bon">
+      <End Role="Bon" EntitySet="Bon" />
+      <End Role="ProduseVandute" EntitySet="ProduseVandute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProduseVandute_Produs" Association="Self.FK_ProduseVandute_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="ProduseVandute" EntitySet="ProduseVandute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stoc_Produs" Association="Self.FK_Stoc_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="Stoc" EntitySet="Stoc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

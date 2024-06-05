@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SupermarketMVPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bon">
+    <Key>
+      <PropertyRef Name="IDbon" />
+    </Key>
+    <Property Name="IDbon" Type="Int32" Nullable="false" />
+    <Property Name="data_eliberare" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IDcasier" Type="Int32" />
+    <Property Name="suma_incasa" Type="Double" Nullable="false" />
+    <Property Name="exista" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Utilizator" Relationship="Self.FK_Bon_Utilizator" FromRole="Bon" ToRole="Utilizator" />
+    <NavigationProperty Name="ProduseVandutes" Relationship="Self.FK_ProduseVandute_Bon" FromRole="Bon" ToRole="ProduseVandute" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="IDcategorie" />
+    </Key>
+    <Property Name="IDcategorie" Type="Int32" Nullable="false" />
+    <Property Name="nume_categorie" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="exista" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Produs" Relationship="Self.FK_Produs_Categorie" FromRole="Categorie" ToRole="Produs" />
+  </EntityType>
+  <EntityType Name="Producator">
+    <Key>
+      <PropertyRef Name="IDproducator" />
+    </Key>
+    <Property Name="IDproducator" Type="Int32" Nullable="false" />
+    <Property Name="nume_producator" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tara_origine" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="exista" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Produs" Relationship="Self.FK_Produs_Producator" FromRole="Producator" ToRole="Produs" />
+  </EntityType>
+  <EntityType Name="Produ">
+    <Key>
+      <PropertyRef Name="IDprodus" />
+    </Key>
+    <Property Name="IDprodus" Type="Int32" Nullable="false" />
+    <Property Name="nume_produs" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cod_bare" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDcategorie" Type="Int32" />
+    <Property Name="IDproducator" Type="Int32" />
+    <Property Name="exista" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Categorie" Relationship="Self.FK_Produs_Categorie" FromRole="Produs" ToRole="Categorie" />
+    <NavigationProperty Name="Producator" Relationship="Self.FK_Produs_Producator" FromRole="Produs" ToRole="Producator" />
+    <NavigationProperty Name="ProduseVandutes" Relationship="Self.FK_ProduseVandute_Produs" FromRole="Produs" ToRole="ProduseVandute" />
+    <NavigationProperty Name="Stocs" Relationship="Self.FK_Stoc_Produs" FromRole="Produs" ToRole="Stoc" />
+  </EntityType>
+  <EntityType Name="ProduseVandute">
+    <Key>
+      <PropertyRef Name="IDbon" />
+      <PropertyRef Name="IDprodus" />
+    </Key>
+    <Property Name="IDbon" Type="Int32" Nullable="false" />
+    <Property Name="IDprodus" Type="Int32" Nullable="false" />
+    <Property Name="cantitate" Type="Int32" Nullable="false" />
+    <Property Name="subtotal" Type="Double" Nullable="false" />
+    <Property Name="exista" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bon" Relationship="Self.FK_ProduseVandute_Bon" FromRole="ProduseVandute" ToRole="Bon" />
+    <NavigationProperty Name="Produ" Relationship="Self.FK_ProduseVandute_Produs" FromRole="ProduseVandute" ToRole="Produs" />
+  </EntityType>
+  <EntityType Name="Stoc">
+    <Key>
+      <PropertyRef Name="IDstoc" />
+    </Key>
+    <Property Name="IDstoc" Type="Int32" Nullable="false" />
+    <Property Name="IDprodus" Type="Int32" />
+    <Property Name="cantitate" Type="Int32" Nullable="false" />
+    <Property Name="unitate_de_masura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="data_aprovizionare" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="data_expirare" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="pret_achizitie" Type="Double" Nullable="false" />
+    <Property Name="pret_vanzare" Type="Double" Nullable="false" />
+    <Property Name="exista" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Produ" Relationship="Self.FK_Stoc_Produs" FromRole="Stoc" ToRole="Produs" />
+  </EntityType>
+  <EntityType Name="Utilizator">
+    <Key>
+      <PropertyRef Name="IDutilizator" />
+    </Key>
+    <Property Name="IDutilizator" Type="Int32" Nullable="false" />
+    <Property Name="nume_utilizator" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="parola" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tip_utilizator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="exista" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bons" Relationship="Self.FK_Bon_Utilizator" FromRole="Utilizator" ToRole="Bon" />
+  </EntityType>
+  <Association Name="FK_Bon_Utilizator">
+    <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+    <End Role="Bon" Type="Self.Bon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizator">
+        <PropertyRef Name="IDutilizator" />
+      </Principal>
+      <Dependent Role="Bon">
+        <PropertyRef Name="IDcasier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProduseVandute_Bon">
+    <End Role="Bon" Type="Self.Bon" Multiplicity="1" />
+    <End Role="ProduseVandute" Type="Self.ProduseVandute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bon">
+        <PropertyRef Name="IDbon" />
+      </Principal>
+      <Dependent Role="ProduseVandute">
+        <PropertyRef Name="IDbon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produs_Categorie">
+    <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+    <End Role="Produs" Type="Self.Produ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie">
+        <PropertyRef Name="IDcategorie" />
+      </Principal>
+      <Dependent Role="Produs">
+        <PropertyRef Name="IDcategorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produs_Producator">
+    <End Role="Producator" Type="Self.Producator" Multiplicity="0..1" />
+    <End Role="Produs" Type="Self.Produ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producator">
+        <PropertyRef Name="IDproducator" />
+      </Principal>
+      <Dependent Role="Produs">
+        <PropertyRef Name="IDproducator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProduseVandute_Produs">
+    <End Role="Produs" Type="Self.Produ" Multiplicity="1" />
+    <End Role="ProduseVandute" Type="Self.ProduseVandute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="IDprodus" />
+      </Principal>
+      <Dependent Role="ProduseVandute">
+        <PropertyRef Name="IDprodus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stoc_Produs">
+    <End Role="Produs" Type="Self.Produ" Multiplicity="0..1" />
+    <End Role="Stoc" Type="Self.Stoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="IDprodus" />
+      </Principal>
+      <Dependent Role="Stoc">
+        <PropertyRef Name="IDprodus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SupermarketMVPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bons" EntityType="Self.Bon" />
+    <EntitySet Name="Categories" EntityType="Self.Categorie" />
+    <EntitySet Name="Producators" EntityType="Self.Producator" />
+    <EntitySet Name="Produs" EntityType="Self.Produ" />
+    <EntitySet Name="ProduseVandutes" EntityType="Self.ProduseVandute" />
+    <EntitySet Name="Stocs" EntityType="Self.Stoc" />
+    <EntitySet Name="Utilizators" EntityType="Self.Utilizator" />
+    <AssociationSet Name="FK_Bon_Utilizator" Association="Self.FK_Bon_Utilizator">
+      <End Role="Utilizator" EntitySet="Utilizators" />
+      <End Role="Bon" EntitySet="Bons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProduseVandute_Bon" Association="Self.FK_ProduseVandute_Bon">
+      <End Role="Bon" EntitySet="Bons" />
+      <End Role="ProduseVandute" EntitySet="ProduseVandutes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produs_Categorie" Association="Self.FK_Produs_Categorie">
+      <End Role="Categorie" EntitySet="Categories" />
+      <End Role="Produs" EntitySet="Produs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produs_Producator" Association="Self.FK_Produs_Producator">
+      <End Role="Producator" EntitySet="Producators" />
+      <End Role="Produs" EntitySet="Produs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProduseVandute_Produs" Association="Self.FK_ProduseVandute_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="ProduseVandute" EntitySet="ProduseVandutes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stoc_Produs" Association="Self.FK_Stoc_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="Stoc" EntitySet="Stocs" />
+    </AssociationSet>
+    <FunctionImport Name="DeleteBon">
+      <Parameter Name="IDbon" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteCategorie">
+      <Parameter Name="IDcategorie" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteProducator">
+      <Parameter Name="IDproducator" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteProdus">
+      <Parameter Name="IDprodus" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteProduseVandute">
+      <Parameter Name="IDbon" Mode="In" Type="Int32" />
+      <Parameter Name="IDprodus" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteStoc">
+      <Parameter Name="IDstoc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteUtilizator">
+      <Parameter Name="IDutilizator" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertBon">
+      <Parameter Name="data_eliberare" Mode="In" Type="DateTime" />
+      <Parameter Name="IDcasier" Mode="In" Type="Int32" />
+      <Parameter Name="suma_incasa" Mode="In" Type="Double" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertCategorie">
+      <Parameter Name="nume_categorie" Mode="In" Type="String" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertProducator">
+      <Parameter Name="nume_producator" Mode="In" Type="String" />
+      <Parameter Name="tara_origine" Mode="In" Type="String" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertProdus">
+      <Parameter Name="nume_produs" Mode="In" Type="String" />
+      <Parameter Name="cod_bare" Mode="In" Type="String" />
+      <Parameter Name="IDcategorie" Mode="In" Type="Int32" />
+      <Parameter Name="IDproducator" Mode="In" Type="Int32" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertProduseVandute">
+      <Parameter Name="IDbon" Mode="In" Type="Int32" />
+      <Parameter Name="IDprodus" Mode="In" Type="Int32" />
+      <Parameter Name="cantitate" Mode="In" Type="Int32" />
+      <Parameter Name="subtotal" Mode="In" Type="Double" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertStoc">
+      <Parameter Name="IDprodus" Mode="In" Type="Int32" />
+      <Parameter Name="cantitate" Mode="In" Type="Int32" />
+      <Parameter Name="unitate_de_masura" Mode="In" Type="String" />
+      <Parameter Name="data_aprovizionare" Mode="In" Type="DateTime" />
+      <Parameter Name="data_expirare" Mode="In" Type="DateTime" />
+      <Parameter Name="pret_achizitie" Mode="In" Type="Double" />
+      <Parameter Name="pret_vanzare" Mode="In" Type="Double" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUtilizator">
+      <Parameter Name="nume_utilizator" Mode="In" Type="String" />
+      <Parameter Name="parola" Mode="In" Type="String" />
+      <Parameter Name="tip_utilizator" Mode="In" Type="String" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SelectAllBonuri" ReturnType="Collection(SupermarketMVPModel.SelectAllBonuri_Result)" />
+    <FunctionImport Name="SelectAllCategorii" ReturnType="Collection(SupermarketMVPModel.SelectAllCategorii_Result)" />
+    <FunctionImport Name="SelectAllProducatori" ReturnType="Collection(SupermarketMVPModel.SelectAllProducatori_Result)" />
+    <FunctionImport Name="SelectAllProduse" ReturnType="Collection(SupermarketMVPModel.SelectAllProduse_Result)" />
+    <FunctionImport Name="SelectAllProduseVandute" ReturnType="Collection(SupermarketMVPModel.SelectAllProduseVandute_Result)" />
+    <FunctionImport Name="SelectAllStoc" ReturnType="Collection(SupermarketMVPModel.SelectAllStoc_Result)" />
+    <FunctionImport Name="SelectAllUtilizatori" ReturnType="Collection(SupermarketMVPModel.SelectAllUtilizatori_Result)" />
+    <FunctionImport Name="UpdateBon">
+      <Parameter Name="IDbon" Mode="In" Type="Int32" />
+      <Parameter Name="data_eliberare" Mode="In" Type="DateTime" />
+      <Parameter Name="IDcasier" Mode="In" Type="Int32" />
+      <Parameter Name="suma_incasa" Mode="In" Type="Double" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateCategorie">
+      <Parameter Name="IDcategorie" Mode="In" Type="Int32" />
+      <Parameter Name="nume_categorie" Mode="In" Type="String" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateProducator">
+      <Parameter Name="IDproducator" Mode="In" Type="Int32" />
+      <Parameter Name="nume_producator" Mode="In" Type="String" />
+      <Parameter Name="tara_origine" Mode="In" Type="String" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateProdus">
+      <Parameter Name="IDprodus" Mode="In" Type="Int32" />
+      <Parameter Name="nume_produs" Mode="In" Type="String" />
+      <Parameter Name="cod_bare" Mode="In" Type="String" />
+      <Parameter Name="IDcategorie" Mode="In" Type="Int32" />
+      <Parameter Name="IDproducator" Mode="In" Type="Int32" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateProduseVandute">
+      <Parameter Name="IDbon" Mode="In" Type="Int32" />
+      <Parameter Name="IDprodus" Mode="In" Type="Int32" />
+      <Parameter Name="cantitate" Mode="In" Type="Int32" />
+      <Parameter Name="subtotal" Mode="In" Type="Double" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateStoc">
+      <Parameter Name="IDstoc" Mode="In" Type="Int32" />
+      <Parameter Name="IDprodus" Mode="In" Type="Int32" />
+      <Parameter Name="cantitate" Mode="In" Type="Int32" />
+      <Parameter Name="unitate_de_masura" Mode="In" Type="String" />
+      <Parameter Name="data_aprovizionare" Mode="In" Type="DateTime" />
+      <Parameter Name="data_expirare" Mode="In" Type="DateTime" />
+      <Parameter Name="pret_achizitie" Mode="In" Type="Double" />
+      <Parameter Name="pret_vanzare" Mode="In" Type="Double" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateUtilizator">
+      <Parameter Name="IDutilizator" Mode="In" Type="Int32" />
+      <Parameter Name="nume_utilizator" Mode="In" Type="String" />
+      <Parameter Name="parola" Mode="In" Type="String" />
+      <Parameter Name="tip_utilizator" Mode="In" Type="String" />
+      <Parameter Name="exista" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="GetPretAchizitieByIdProdus">
+      <Parameter Name="IDprodus" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SelectAllBonuri_Result">
+    <Property Type="Int32" Name="IDbon" Nullable="false" />
+    <Property Type="DateTime" Name="data_eliberare" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="IDcasier" Nullable="true" />
+    <Property Type="Double" Name="suma_incasa" Nullable="false" />
+    <Property Type="Boolean" Name="exista" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllCategorii_Result">
+    <Property Type="Int32" Name="IDcategorie" Nullable="false" />
+    <Property Type="String" Name="nume_categorie" Nullable="false" MaxLength="255" />
+    <Property Type="Boolean" Name="exista" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllProducatori_Result">
+    <Property Type="Int32" Name="IDproducator" Nullable="false" />
+    <Property Type="String" Name="nume_producator" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="tara_origine" Nullable="false" MaxLength="255" />
+    <Property Type="Boolean" Name="exista" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllProduse_Result">
+    <Property Type="Int32" Name="IDprodus" Nullable="false" />
+    <Property Type="String" Name="nume_produs" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="cod_bare" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="IDcategorie" Nullable="true" />
+    <Property Type="Int32" Name="IDproducator" Nullable="true" />
+    <Property Type="Boolean" Name="exista" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllProduseVandute_Result">
+    <Property Type="Int32" Name="IDbon" Nullable="false" />
+    <Property Type="Int32" Name="IDprodus" Nullable="false" />
+    <Property Type="Int32" Name="cantitate" Nullable="false" />
+    <Property Type="Double" Name="subtotal" Nullable="false" />
+    <Property Type="Boolean" Name="exista" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllStoc_Result">
+    <Property Type="Int32" Name="IDstoc" Nullable="false" />
+    <Property Type="Int32" Name="IDprodus" Nullable="true" />
+    <Property Type="Int32" Name="cantitate" Nullable="false" />
+    <Property Type="String" Name="unitate_de_masura" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="data_aprovizionare" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="data_expirare" Nullable="false" Precision="23" />
+    <Property Type="Double" Name="pret_achizitie" Nullable="false" />
+    <Property Type="Double" Name="pret_vanzare" Nullable="false" />
+    <Property Type="Boolean" Name="exista" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllUtilizatori_Result">
+    <Property Type="Int32" Name="IDutilizator" Nullable="false" />
+    <Property Type="String" Name="nume_utilizator" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="parola" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="tip_utilizator" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="exista" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SupermarketMVPModelStoreContainer" CdmEntityContainer="SupermarketMVPEntities">
+    <EntitySetMapping Name="Bons">
+      <EntityTypeMapping TypeName="SupermarketMVPModel.Bon">
+        <MappingFragment StoreEntitySet="Bon">
+          <ScalarProperty Name="IDbon" ColumnName="IDbon" />
+          <ScalarProperty Name="data_eliberare" ColumnName="data_eliberare" />
+          <ScalarProperty Name="IDcasier" ColumnName="IDcasier" />
+          <ScalarProperty Name="suma_incasa" ColumnName="suma_incasa" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="SupermarketMVPModel.Categorie">
+        <MappingFragment StoreEntitySet="Categorie">
+          <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
+          <ScalarProperty Name="nume_categorie" ColumnName="nume_categorie" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producators">
+      <EntityTypeMapping TypeName="SupermarketMVPModel.Producator">
+        <MappingFragment StoreEntitySet="Producator">
+          <ScalarProperty Name="IDproducator" ColumnName="IDproducator" />
+          <ScalarProperty Name="nume_producator" ColumnName="nume_producator" />
+          <ScalarProperty Name="tara_origine" ColumnName="tara_origine" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produs">
+      <EntityTypeMapping TypeName="SupermarketMVPModel.Produ">
+        <MappingFragment StoreEntitySet="Produs">
+          <ScalarProperty Name="IDprodus" ColumnName="IDprodus" />
+          <ScalarProperty Name="nume_produs" ColumnName="nume_produs" />
+          <ScalarProperty Name="cod_bare" ColumnName="cod_bare" />
+          <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
+          <ScalarProperty Name="IDproducator" ColumnName="IDproducator" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProduseVandutes">
+      <EntityTypeMapping TypeName="SupermarketMVPModel.ProduseVandute">
+        <MappingFragment StoreEntitySet="ProduseVandute">
+          <ScalarProperty Name="IDbon" ColumnName="IDbon" />
+          <ScalarProperty Name="IDprodus" ColumnName="IDprodus" />
+          <ScalarProperty Name="cantitate" ColumnName="cantitate" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocs">
+      <EntityTypeMapping TypeName="SupermarketMVPModel.Stoc">
+        <MappingFragment StoreEntitySet="Stoc">
+          <ScalarProperty Name="IDstoc" ColumnName="IDstoc" />
+          <ScalarProperty Name="IDprodus" ColumnName="IDprodus" />
+          <ScalarProperty Name="cantitate" ColumnName="cantitate" />
+          <ScalarProperty Name="unitate_de_masura" ColumnName="unitate_de_masura" />
+          <ScalarProperty Name="data_aprovizionare" ColumnName="data_aprovizionare" />
+          <ScalarProperty Name="data_expirare" ColumnName="data_expirare" />
+          <ScalarProperty Name="pret_achizitie" ColumnName="pret_achizitie" />
+          <ScalarProperty Name="pret_vanzare" ColumnName="pret_vanzare" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilizators">
+      <EntityTypeMapping TypeName="SupermarketMVPModel.Utilizator">
+        <MappingFragment StoreEntitySet="Utilizator">
+          <ScalarProperty Name="IDutilizator" ColumnName="IDutilizator" />
+          <ScalarProperty Name="nume_utilizator" ColumnName="nume_utilizator" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+          <ScalarProperty Name="tip_utilizator" ColumnName="tip_utilizator" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DeleteBon" FunctionName="SupermarketMVPModel.Store.DeleteBon" />
+    <FunctionImportMapping FunctionImportName="DeleteCategorie" FunctionName="SupermarketMVPModel.Store.DeleteCategorie" />
+    <FunctionImportMapping FunctionImportName="DeleteProducator" FunctionName="SupermarketMVPModel.Store.DeleteProducator" />
+    <FunctionImportMapping FunctionImportName="DeleteProdus" FunctionName="SupermarketMVPModel.Store.DeleteProdus" />
+    <FunctionImportMapping FunctionImportName="DeleteProduseVandute" FunctionName="SupermarketMVPModel.Store.DeleteProduseVandute" />
+    <FunctionImportMapping FunctionImportName="DeleteStoc" FunctionName="SupermarketMVPModel.Store.DeleteStoc" />
+    <FunctionImportMapping FunctionImportName="DeleteUtilizator" FunctionName="SupermarketMVPModel.Store.DeleteUtilizator" />
+    <FunctionImportMapping FunctionImportName="InsertBon" FunctionName="SupermarketMVPModel.Store.InsertBon" />
+    <FunctionImportMapping FunctionImportName="InsertCategorie" FunctionName="SupermarketMVPModel.Store.InsertCategorie" />
+    <FunctionImportMapping FunctionImportName="InsertProducator" FunctionName="SupermarketMVPModel.Store.InsertProducator" />
+    <FunctionImportMapping FunctionImportName="InsertProdus" FunctionName="SupermarketMVPModel.Store.InsertProdus" />
+    <FunctionImportMapping FunctionImportName="InsertProduseVandute" FunctionName="SupermarketMVPModel.Store.InsertProduseVandute" />
+    <FunctionImportMapping FunctionImportName="InsertStoc" FunctionName="SupermarketMVPModel.Store.InsertStoc" />
+    <FunctionImportMapping FunctionImportName="InsertUtilizator" FunctionName="SupermarketMVPModel.Store.InsertUtilizator" />
+    <FunctionImportMapping FunctionImportName="SelectAllBonuri" FunctionName="SupermarketMVPModel.Store.SelectAllBonuri">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SupermarketMVPModel.SelectAllBonuri_Result">
+          <ScalarProperty Name="IDbon" ColumnName="IDbon" />
+          <ScalarProperty Name="data_eliberare" ColumnName="data_eliberare" />
+          <ScalarProperty Name="IDcasier" ColumnName="IDcasier" />
+          <ScalarProperty Name="suma_incasa" ColumnName="suma_incasa" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllCategorii" FunctionName="SupermarketMVPModel.Store.SelectAllCategorii">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SupermarketMVPModel.SelectAllCategorii_Result">
+          <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
+          <ScalarProperty Name="nume_categorie" ColumnName="nume_categorie" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllProducatori" FunctionName="SupermarketMVPModel.Store.SelectAllProducatori">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SupermarketMVPModel.SelectAllProducatori_Result">
+          <ScalarProperty Name="IDproducator" ColumnName="IDproducator" />
+          <ScalarProperty Name="nume_producator" ColumnName="nume_producator" />
+          <ScalarProperty Name="tara_origine" ColumnName="tara_origine" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllProduse" FunctionName="SupermarketMVPModel.Store.SelectAllProduse">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SupermarketMVPModel.SelectAllProduse_Result">
+          <ScalarProperty Name="IDprodus" ColumnName="IDprodus" />
+          <ScalarProperty Name="nume_produs" ColumnName="nume_produs" />
+          <ScalarProperty Name="cod_bare" ColumnName="cod_bare" />
+          <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
+          <ScalarProperty Name="IDproducator" ColumnName="IDproducator" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllProduseVandute" FunctionName="SupermarketMVPModel.Store.SelectAllProduseVandute">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SupermarketMVPModel.SelectAllProduseVandute_Result">
+          <ScalarProperty Name="IDbon" ColumnName="IDbon" />
+          <ScalarProperty Name="IDprodus" ColumnName="IDprodus" />
+          <ScalarProperty Name="cantitate" ColumnName="cantitate" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllStoc" FunctionName="SupermarketMVPModel.Store.SelectAllStoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SupermarketMVPModel.SelectAllStoc_Result">
+          <ScalarProperty Name="IDstoc" ColumnName="IDstoc" />
+          <ScalarProperty Name="IDprodus" ColumnName="IDprodus" />
+          <ScalarProperty Name="cantitate" ColumnName="cantitate" />
+          <ScalarProperty Name="unitate_de_masura" ColumnName="unitate_de_masura" />
+          <ScalarProperty Name="data_aprovizionare" ColumnName="data_aprovizionare" />
+          <ScalarProperty Name="data_expirare" ColumnName="data_expirare" />
+          <ScalarProperty Name="pret_achizitie" ColumnName="pret_achizitie" />
+          <ScalarProperty Name="pret_vanzare" ColumnName="pret_vanzare" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllUtilizatori" FunctionName="SupermarketMVPModel.Store.SelectAllUtilizatori">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SupermarketMVPModel.SelectAllUtilizatori_Result">
+          <ScalarProperty Name="IDutilizator" ColumnName="IDutilizator" />
+          <ScalarProperty Name="nume_utilizator" ColumnName="nume_utilizator" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+          <ScalarProperty Name="tip_utilizator" ColumnName="tip_utilizator" />
+          <ScalarProperty Name="exista" ColumnName="exista" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateBon" FunctionName="SupermarketMVPModel.Store.UpdateBon" />
+    <FunctionImportMapping FunctionImportName="UpdateCategorie" FunctionName="SupermarketMVPModel.Store.UpdateCategorie" />
+    <FunctionImportMapping FunctionImportName="UpdateProducator" FunctionName="SupermarketMVPModel.Store.UpdateProducator" />
+    <FunctionImportMapping FunctionImportName="UpdateProdus" FunctionName="SupermarketMVPModel.Store.UpdateProdus" />
+    <FunctionImportMapping FunctionImportName="UpdateProduseVandute" FunctionName="SupermarketMVPModel.Store.UpdateProduseVandute" />
+    <FunctionImportMapping FunctionImportName="UpdateStoc" FunctionName="SupermarketMVPModel.Store.UpdateStoc" />
+    <FunctionImportMapping FunctionImportName="UpdateUtilizator" FunctionName="SupermarketMVPModel.Store.UpdateUtilizator" />
+    <FunctionImportMapping FunctionImportName="GetPretAchizitieByIdProdus" FunctionName="SupermarketMVPModel.Store.GetPretAchizitieByIdProdus" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,56 @@
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\bin\Debug\Tema3MVVM.exe.config
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\bin\Debug\Tema3MVVM.exe
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\bin\Debug\Tema3MVVM.pdb
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\bin\Debug\EntityFramework.dll
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\bin\Debug\EntityFramework.SqlServer.dll
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\bin\Debug\EntityFramework.xml
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\bin\Debug\EntityFramework.SqlServer.xml
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.csproj.AssemblyReference.cache
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\MainWindow.g.cs
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\App.g.cs
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM_Content.g.cs
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM_MarkupCompile.cache
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM_MarkupCompile.lref
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\MainWindow.baml
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.g.resources
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.Properties.Resources.resources
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.csproj.GenerateResource.cache
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.csproj.CoreCompileInputs.cache
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.csproj.CopyComplete
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.exe
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.pdb
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\AdminWindow.g.cs
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\CasierWindow.g.cs
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\AdminWindow.baml
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\CasierWindow.baml
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\InputDialog.baml
+C:\date\FACULTATE\Anul 2 Sem 2\MVP\Tema3MVVM\Tema3MVVM\obj\Debug\InputDialog.g.cs
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\bin\Debug\Tema3MVVM.exe.config
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\bin\Debug\Tema3MVVM.exe
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\bin\Debug\Tema3MVVM.pdb
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\bin\Debug\EntityFramework.dll
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\bin\Debug\EntityFramework.xml
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.csproj.AssemblyReference.cache
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\InputDialog.baml
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\AdminWindow.g.cs
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\CasierWindow.g.cs
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\InputDialog.g.cs
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\MainWindow.g.cs
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\App.g.cs
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM_Content.g.cs
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM_MarkupCompile.cache
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM_MarkupCompile.lref
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\AdminWindow.baml
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\CasierWindow.baml
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\MainWindow.baml
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.g.resources
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.Properties.Resources.resources
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.csproj.GenerateResource.cache
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.csproj.CoreCompileInputs.cache
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.csproj.CopyComplete
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.exe
+C:\Users\Acasa\Downloads\Tema3MVVM\Tema3MVVM\Tema3MVVM\obj\Debug\Tema3MVVM.pdb
